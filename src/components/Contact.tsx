@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import emailjs from '@emailjs/browser'
 import {
     Mail,
     Phone,
@@ -35,12 +36,39 @@ const Contact: React.FC = () => {
         e.preventDefault()
         setFormStatus('sending')
 
-        // Simulate form submission
-        setTimeout(() => {
+        try {
+            // Get EmailJS credentials from environment variables
+            const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+            const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+            const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+            // Validate configuration
+            if (!serviceId || !templateId || !publicKey) {
+                throw new Error('EmailJS configuration is missing. Please check your environment variables.')
+            }
+
+            // Send email using EmailJS
+            await emailjs.send(
+                serviceId,
+                templateId,
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    subject: formData.subject,
+                    message: formData.message,
+                    to_email: 'nicktlina@gmail.com', // Your email address
+                },
+                publicKey
+            )
+
             setFormStatus('success')
             setFormData({ name: '', email: '', subject: '', message: '' })
-            setTimeout(() => setFormStatus('idle'), 3000)
-        }, 2000)
+            setTimeout(() => setFormStatus('idle'), 5000)
+        } catch (error) {
+            console.error('EmailJS error:', error)
+            setFormStatus('error')
+            setTimeout(() => setFormStatus('idle'), 5000)
+        }
     }
 
     const contactInfo = [
