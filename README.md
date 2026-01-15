@@ -4,7 +4,7 @@ A modern, high-performance portfolio website built with React, TypeScript, and V
 
 ## 🚀 Features
 
-- **Ultra Modern Design**: Tech-themed with glass morphism effects and smooth animations
+- **Modern Design**: Tech-themed with glass morphism effects and smooth animations
 - **Lightning Fast**: Optimized for performance with lazy loading and code splitting
 - **Fully Responsive**: Works perfectly on all devices
 - **SEO Optimized**: Meta tags, structured data, and semantic HTML
@@ -45,6 +45,56 @@ A modern, high-performance portfolio website built with React, TypeScript, and V
    ```bash
    npm run preview
    ```
+
+## 📧 Contact Form Setup
+
+The contact form uses **EmailJS** (free tier: 200 emails/month) to send emails without a backend server.
+
+### Setup Steps:
+
+1. **Create EmailJS Account**
+   - Sign up at [https://www.emailjs.com/](https://www.emailjs.com/)
+   - Free tier includes 200 emails per month
+
+2. **Add Email Service**
+   - Go to [Email Services](https://dashboard.emailjs.com/admin/integration)
+   - Click "Add New Service"
+   - Choose your email provider (Gmail, Outlook, etc.)
+   - Follow the setup instructions
+   - **Copy your Service ID**
+
+3. **Create Email Template**
+   - Go to [Email Templates](https://dashboard.emailjs.com/admin/template)
+   - Click "Create New Template"
+   - Use these template variables:
+     ```
+     From: {{from_name}} <{{from_email}}>
+     Subject: {{subject}}
+     
+     Message:
+     {{message}}
+     ```
+   - Set "To Email" to your email address (e.g., `nicktlina@gmail.com`)
+   - **Copy your Template ID**
+
+4. **Get Public Key**
+   - Go to [Account](https://dashboard.emailjs.com/admin/account/general)
+   - **Copy your Public Key**
+
+5. **Configure Environment Variables**
+   - Create a `.env` file in the root directory:
+     ```env
+     VITE_EMAILJS_SERVICE_ID=your_service_id
+     VITE_EMAILJS_TEMPLATE_ID=your_template_id
+     VITE_EMAILJS_PUBLIC_KEY=your_public_key
+     ```
+   - **Important**: Add `.env` to `.gitignore` (already included)
+
+6. **Deploy to Vercel**
+   - Add the same environment variables in your Vercel project settings:
+     - Go to your project → Settings → Environment Variables
+     - Add each variable with the `VITE_` prefix
+   - Redeploy your site
 
 ## 📁 Project Structure
 
@@ -137,28 +187,6 @@ Update the following files with your information:
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run deploy` - Deploy to Vercel
-
-### Performance Monitoring
-
-The portfolio includes performance optimizations:
-- Intersection Observer for scroll-based animations
-- Debounced scroll handlers
-- Reduced motion support
-- Optimized image loading
-
-## 📱 Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
 
 ## 📄 License
 
