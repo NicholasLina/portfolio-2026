@@ -95,8 +95,7 @@ const Projects: React.FC = () => {
                         variants={itemVariants}
                         className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
                     >
-                        A showcase of my recent work, featuring full-stack applications,
-                        mobile apps, and innovative solutions built with modern technologies.
+                        A selection of projects demonstrating system design, frontend architecture, and reliable production-ready code.
                     </motion.p>
                 </motion.div>
 
