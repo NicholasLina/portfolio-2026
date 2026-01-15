@@ -41,9 +41,11 @@ const Contact: React.FC = () => {
             const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
             const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
             const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+            const recipientEmail =
+                import.meta.env.VITE_CONTACT_TO_EMAIL || 'nicktlina@gmail.com'
 
             // Validate configuration
-            if (!serviceId || !templateId || !publicKey) {
+            if (!serviceId || !templateId || !publicKey || !recipientEmail) {
                 throw new Error('EmailJS configuration is missing. Please check your environment variables.')
             }
 
@@ -56,7 +58,7 @@ const Contact: React.FC = () => {
                     from_email: formData.email,
                     subject: formData.subject,
                     message: formData.message,
-                    to_email: 'nicktlina@gmail.com', // Your email address
+                    to_email: recipientEmail,
                 },
                 publicKey
             )
