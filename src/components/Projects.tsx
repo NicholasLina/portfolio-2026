@@ -6,7 +6,6 @@ import {
     ExternalLink,
     Github,
     Code,
-    ChevronRight,
 } from 'lucide-react'
 import LazyImage from './LazyImage'
 
