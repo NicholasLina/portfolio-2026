@@ -3,16 +3,8 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import emailjs from '@emailjs/browser'
-import {
-    Mail,
-    Phone,
-    MapPin,
-    Send,
-    Github,
-    Linkedin,
-    CheckCircle,
-    AlertCircle
-} from 'lucide-react'
+import { Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { contactInfo, socialLinks } from '../data/contact'
 
 const Contact: React.FC = () => {
     const ref = useRef(null)
@@ -72,33 +64,6 @@ const Contact: React.FC = () => {
             setTimeout(() => setFormStatus('idle'), 5000)
         }
     }
-
-    const contactInfo = [
-        {
-            icon: Mail,
-            label: 'Email',
-            value: 'nicktlina@gmail.com',
-            href: 'nicktlina@gmail.com'
-        },
-        {
-            icon: Phone,
-            label: 'Phone',
-            value: '+1 (416) 414-2856',
-            href: 'tel:+14164142856'
-        },
-        {
-            icon: MapPin,
-            label: 'Location',
-            value: 'Markham, ON',
-            href: '#'
-        }
-    ]
-
-    const socialLinks = [
-        { icon: Github, href: 'https://github.com/NicholasLina', label: 'GitHub' },
-        { icon: Linkedin, href: 'https://www.linkedin.com/in/nick-lina-87bb92164/', label: 'LinkedIn' },
-        { icon: Mail, href: 'mailto:nicktlina@gmail.com', label: 'Email' },
-    ]
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -278,7 +243,7 @@ const Contact: React.FC = () => {
                                     required
                                     rows={5}
                                     className="w-full px-4 py-3 bg-dark-800 border border-dark-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 resize-none"
-                                    placeholder="Tell me about your project..."
+                                    placeholder="How can I help you?"
                                 />
                             </div>
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Menu, X, Code, Github, Linkedin, Mail } from 'lucide-react'
+import { Menu, X, Code } from 'lucide-react'
+import { socialLinks } from '../data/contact'
 
 const Header: React.FC = () => {
     const [isScrolled, setIsScrolled] = useState(false)
@@ -18,12 +19,6 @@ const Header: React.FC = () => {
         { name: 'About', href: '#about' },
         { name: 'Projects', href: '#projects' },
         { name: 'Contact', href: '#contact' },
-    ]
-
-    const socialLinks = [
-        { icon: Github, href: 'https://github.com/NicholasLina', label: 'GitHub' },
-        { icon: Linkedin, href: 'https://www.linkedin.com/in/nick-lina-87bb92164/', label: 'LinkedIn' },
-        { icon: Mail, href: 'mailto:nicktlina@gmail.com', label: 'Email' },
     ]
 
     return (
