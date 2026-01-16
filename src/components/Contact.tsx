@@ -278,7 +278,7 @@ const Contact: React.FC = () => {
                                     required
                                     rows={5}
                                     className="w-full px-4 py-3 bg-dark-800 border border-dark-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 resize-none"
-                                    placeholder="Tell me about your project..."
+                                    placeholder="How can I help you?"
                                 />
                             </div>
 
