@@ -7,13 +7,17 @@ interface LazyImageProps {
     alt: string
     className?: string
     placeholder?: string
+    srcSet?: string
+    sizes?: string
 }
 
 const LazyImage: React.FC<LazyImageProps> = ({
     src,
     alt,
     className = '',
-    placeholder = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWUyOTNiIi8+PC9zdmc+'
+    placeholder = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWUyOTNiIi8+PC9zdmc+',
+    srcSet,
+    sizes,
 }) => {
     const [isLoaded, setIsLoaded] = useState(false)
     const [isInView, setIsInView] = useState(false)
@@ -49,6 +53,8 @@ const LazyImage: React.FC<LazyImageProps> = ({
                 <motion.img
                     src={src}
                     alt={alt}
+                    srcSet={srcSet}
+                    sizes={sizes}
                     onLoad={handleLoad}
                     className="w-full h-full object-cover"
                     initial={{ opacity: 0, scale: 1.1 }}
