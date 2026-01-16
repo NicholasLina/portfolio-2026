@@ -86,16 +86,16 @@ const About: React.FC = () => {
                     </motion.h2>
                     <motion.p
                         variants={itemVariants}
-                        className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
+                        className="text-md md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
                     >
-                        I design and build reliable full-stack systems with a focus on security, maintainability, and scalability. My work spans modern React frontends, well-structured APIs, and cloud-based infrastructure, with an emphasis on type safety, testing, and CI/CD.
+                        I design and build reliable full-stack systems with an emphasis on security, maintainability, and scalability. My expertise spans modern React frontends, robust APIs, and cloud-based infrastructure, with a strong focus on type safety, testing, and CI/CD pipelines.
                     </motion.p>
                     <br></br>
                     <motion.p
                         variants={itemVariants}
-                        className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
+                        className="text-md md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
                     >
-                        I've delivered internal tools and production applications in both enterprise and agency settings, collaborating closely with product, design, and compliance stakeholders to turn complex requirements into practical solutions.
+                        I've delivered internal tools and production applications across enterprise and agency environments, working closely with product, design, and compliance teams to transform complex requirements into practical, high-quality solutions.
                     </motion.p>
                 </motion.div>
 
@@ -191,7 +191,7 @@ const About: React.FC = () => {
                                 >
                                     <achievement.icon className={`w-6 h-6 ${achievement.color} flex-shrink-0`} />
                                     <div className="flex flex-col">
-                                        <p className="text-gray-300">{achievement.text}</p>
+                                        <p className="text-gray-300 font-bold">{achievement.text}</p>
                                         <p className="text-gray-400 text-sm">{achievement.subtext}</p>
                                     </div>
                                 </motion.div>
@@ -205,10 +205,10 @@ const About: React.FC = () => {
                         >
                             <h4 className="text-lg font-semibold text-white mb-3">Beyond Code</h4>
                             <p className="text-gray-400 leading-relaxed">
-                                Outside of software, I spend a lot of time in nature—camping, hiking, and exploring the backcountry whenever I can. Being outdoors helps me reset, think clearly, and appreciate simple, well-designed systems.
+                                When I'm not coding, you'll find me in the backcountry—hiking, camping, and exploring. Nature helps me reset, think clearly, and see the elegance in systems.
                             </p>
                             <p className="text-gray-400 leading-relaxed mt-4">
-                                I'm also a musician, which influences how I approach creativity, collaboration, and iteration. Both music and time outdoors shape how I problem-solve and bring balance to my work as an engineer.
+                                I'm also a musician, and the creativity, collaboration, and iterative mindset it requires shapes how I tackle challenges and innovate in my work.
                             </p>
                         </motion.div>
                     </motion.div>

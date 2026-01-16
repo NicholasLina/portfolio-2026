@@ -55,3 +55,10 @@
         text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     }
 }
+
+@media (max-width: 600px) {
+    .hero-tech-icon[data-tech='code'] {
+        left: 3% !important;
+        top: 68% !important;
+    }
+}

@@ -87,7 +87,7 @@ const Projects: React.FC = () => {
                     </motion.h2>
                     <motion.p
                         variants={itemVariants}
-                        className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
+                        className="text-md md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
                     >
                         A selection of projects demonstrating system design, frontend architecture, and reliable production-ready code.
                     </motion.p>
