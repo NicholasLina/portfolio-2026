@@ -86,14 +86,14 @@ const About: React.FC = () => {
                     </motion.h2>
                     <motion.p
                         variants={itemVariants}
-                        className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
+                        className="text-md md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
                     >
                         I design and build reliable full-stack systems with an emphasis on security, maintainability, and scalability. My expertise spans modern React frontends, robust APIs, and cloud-based infrastructure, with a strong focus on type safety, testing, and CI/CD pipelines.
                     </motion.p>
                     <br></br>
                     <motion.p
                         variants={itemVariants}
-                        className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
+                        className="text-md md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
                     >
                         I've delivered internal tools and production applications across enterprise and agency environments, working closely with product, design, and compliance teams to transform complex requirements into practical, high-quality solutions.
                     </motion.p>
@@ -191,7 +191,7 @@ const About: React.FC = () => {
                                 >
                                     <achievement.icon className={`w-6 h-6 ${achievement.color} flex-shrink-0`} />
                                     <div className="flex flex-col">
-                                        <p className="text-gray-300">{achievement.text}</p>
+                                        <p className="text-gray-300 font-bold">{achievement.text}</p>
                                         <p className="text-gray-400 text-sm">{achievement.subtext}</p>
                                     </div>
                                 </motion.div>
