@@ -71,9 +71,9 @@ const Hero: React.FC = () => {
                 className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
             >
                 {/* Main Heading */}
-                <motion.div variants={itemVariants} className="mb-8">
+                <motion.div variants={itemVariants} className="mb-6 mt-10">
                     <motion.h1
-                        className="text-5xl md:text-7xl font-bold mb-6"
+                        className="text-5xl md:text-7xl font-bold mb-2"
                         initial={{ scale: 0.5 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -93,7 +93,7 @@ const Hero: React.FC = () => {
                 {/* Subtitle */}
                 <motion.p
                     variants={itemVariants}
-                    className="text-md md:text-lg text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
+                    className="text-md md:text-lg text-gray-400 max-w-3xl mx-auto mb-8 leading-relaxed px-2"
                 >
                     Full-stack software engineer with 7+ years of experience building secure, scalable web applications and internal tools across enterprise and agency environments. Strong expertise in React, TypeScript, RESTful APIs, and cloud platforms. Proven ability to deliver compliant, well-tested systems in collaboration with cross-functional teams.
                 </motion.p>
@@ -124,7 +124,7 @@ const Hero: React.FC = () => {
                 {/* Tech Stack Preview */}
                 <motion.div
                     variants={itemVariants}
-                    className="flex flex-wrap justify-center gap-4 text-sm text-gray-500"
+                    className="md:flex flex-wrap justify-center gap-4 text-sm text-gray-500 hidden"
                 >
                     {['React', 'TypeScript', 'MongoDB', 'Python', 'Linux', 'Docker'].map((tech) => (
                         <motion.span
