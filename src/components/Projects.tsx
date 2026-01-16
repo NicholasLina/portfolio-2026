@@ -8,6 +8,7 @@ import {
     Code,
     ChevronRight,
 } from 'lucide-react'
+import LazyImage from './LazyImage'
 
 const Projects: React.FC = () => {
     const ref = useRef(null)
@@ -16,39 +17,33 @@ const Projects: React.FC = () => {
     const projects = [
         {
             id: 1,
-            title: 'E-Commerce Platform',
-            description: 'Full-stack e-commerce solution with real-time inventory management, payment processing, and admin dashboard.',
-            image: '/api/placeholder/600/400',
-            technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'AWS'],
-            category: 'Full Stack',
-            featured: true,
-            github: 'https://github.com/nicklina/ecommerce-platform',
-            live: 'https://ecommerce-demo.com',
-            stats: { users: '10K+', performance: '99.9%', rating: '4.9' }
+            title: 'Canadian Grocery Index',
+            description: 'Full-stack web app that turns Statistics Canada data into clear, interactive grocery price insights. It automates data ingestion and analysis, then visualizes trends like top movers, price streaks, and year-over-year changes.',
+            image: '/images/projects/CGI-600x400.webp',
+            image2x: '/images/projects/CGI-1200x800.webp',
+            technologies: ['Next.js', 'Express.js', 'MongoDB', 'Python', 'D3.js', 'Tailwind CSS', 'Vercel'],
+            github: 'https://github.com/NicholasLina/grocery-index',
+            live: 'https://grocery-index.nicklina.com/',
         },
         {
             id: 2,
-            title: 'AI-Powered Analytics Dashboard',
-            description: 'Real-time data visualization dashboard with machine learning insights and predictive analytics.',
-            image: '/api/placeholder/600/400',
-            technologies: ['React', 'Python', 'TensorFlow', 'D3.js', 'Docker'],
-            category: 'AI/ML',
-            featured: true,
-            github: 'https://github.com/nicklina/ai-analytics',
-            live: 'https://analytics-demo.com',
-            stats: { accuracy: '95%', speed: '2x faster', users: '5K+' }
+            title: 'Rot8n',
+            description: 'A music analytics and social app that connects to Spotify via OAuth and JWT for secure access. The API is built with strong safeguards like rate limiting, input validation, comprehensive error handling, CORS, and security headers. ',
+            image: '/images/projects/Rot8n-600x400.webp',
+            image2x: '/images/projects/Rot8n-1200x800.webp',
+            technologies: ['React', 'TypeScript', 'Express.js', 'MongoDB', 'JWT', 'OAuth'],
+            showCode: false,
+            github: 'https://github.com/NicholasLina/rot8n',
+            live: 'https://www.rot8n.ca',
         },
         {
             id: 3,
-            title: 'Mobile Banking App',
-            description: 'Secure mobile banking application with biometric authentication and real-time transaction monitoring.',
-            image: '/api/placeholder/600/400',
-            technologies: ['React Native', 'Node.js', 'MongoDB', 'JWT', 'Firebase'],
-            category: 'Mobile',
-            featured: false,
-            github: 'https://github.com/nicklina/banking-app',
-            live: 'https://banking-demo.com',
-            stats: { security: 'Bank-grade', users: '50K+', rating: '4.8' }
+            title: 'This Portfolio',
+            description: 'Personal portfolio showcasing featured projects, a responsive layout, and thoughtful motion design focused on clarity and performance.',
+            image: null,
+            technologies: ['React', 'TypeScript', 'Vite', 'Vitest', 'Tailwind CSS', 'Framer Motion', 'EmailJS'],
+            github: 'https://github.com/NicholasLina/portfolio-2026',
+            live: 'https://nicklina.com/',
         }
     ]
 
@@ -111,22 +106,30 @@ const Projects: React.FC = () => {
                             key={project.id}
                             variants={itemVariants}
                             whileHover={{ y: -10, scale: 1.02 }}
-                            className={`glass-effect rounded-xl overflow-hidden group ${project.featured ? 'lg:col-span-2' : ''
-                                }`}
+                            className={`glass-effect rounded-xl overflow-hidden group`}
                         >
                             {/* Project Image */}
                             <div className="relative h-48 bg-gradient-to-br from-primary-500/20 to-primary-600/20 overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-transparent" />
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <Code className="w-16 h-16 text-primary-500/50" />
-                                </div>
-                                <div className="absolute top-4 right-4">
-                                    {project.featured && (
-                                        <span className="bg-primary-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                                            Featured
-                                        </span>
-                                    )}
-                                </div>
+                                {project.image ? (
+                                    <LazyImage
+                                        src={project.image}
+                                        srcSet={
+                                            project.image2x
+                                                ? `${project.image} 600w, ${project.image2x} 1200w`
+                                                : undefined
+                                        }
+                                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                        alt={`${project.title} preview`}
+                                        className="w-full h-full"
+                                    />
+                                ) : (
+                                    <>
+                                        <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-transparent" />
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <Code className="w-16 h-16 text-primary-500/50" />
+                                        </div>
+                                    </>
+                                )}
                             </div>
 
                             {/* Project Content */}
@@ -135,12 +138,9 @@ const Projects: React.FC = () => {
                                     <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors duration-300">
                                         {project.title}
                                     </h3>
-                                    <span className="text-sm text-primary-400 font-medium">
-                                        {project.category}
-                                    </span>
                                 </div>
 
-                                <p className="text-gray-400 mb-4 leading-relaxed">
+                                <p className="text-gray-400 mb-4 leading-relaxed text-sm">
                                     {project.description}
                                 </p>
 
@@ -168,17 +168,19 @@ const Projects: React.FC = () => {
 
                                 {/* Action Buttons */}
                                 <div className="flex space-x-3">
-                                    <motion.a
-                                        href={project.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="flex-1 btn-secondary flex items-center justify-center space-x-2"
-                                    >
-                                        <Github className="w-4 h-4" />
-                                        <span>Code</span>
-                                    </motion.a>
+                                    {project.showCode !== false && (
+                                        <motion.a
+                                            href={project.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            className="flex-1 btn-secondary flex items-center justify-center space-x-2"
+                                        >
+                                            <Github className="w-4 h-4" />
+                                            <span>Code</span>
+                                        </motion.a>
+                                    )}
                                     <motion.a
                                         href={project.live}
                                         target="_blank"
@@ -197,24 +199,6 @@ const Projects: React.FC = () => {
                 </motion.div>
 
                 {/* View More Button */}
-                <motion.div
-                    variants={itemVariants}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    className="text-center mt-12"
-                >
-                    <motion.a
-                        href="https://github.com/nicklina"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="btn-secondary inline-flex items-center space-x-2"
-                    >
-                        <span>View All Projects</span>
-                        <ChevronRight className="w-4 h-4" />
-                    </motion.a>
-                </motion.div>
             </div>
         </section>
     )
