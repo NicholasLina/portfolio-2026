@@ -83,7 +83,6 @@ dist
 
 # Gatsby files
 .cache/
-public
 
 # Storybook build outputs
 .out
@@ -189,3 +188,5 @@ dist
 # TernJS port file
 .tern-port
 
+.vercel
+.env*.local
