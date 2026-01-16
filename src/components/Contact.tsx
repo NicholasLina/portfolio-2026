@@ -106,7 +106,7 @@ const Contact: React.FC = () => {
                     </motion.h2>
                     <motion.p
                         variants={itemVariants}
-                        className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
+                        className="text-md md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
                     >
                         Have a project in mind or want to collaborate? I'd love to hear from you.
                         <br></br>
