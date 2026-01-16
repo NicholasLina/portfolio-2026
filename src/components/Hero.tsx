@@ -41,7 +41,8 @@ const Hero: React.FC = () => {
                 {techIcons.map((tech, index) => (
                     <motion.div
                         key={tech.label}
-                        className="absolute"
+                        className="absolute hero-tech-icon"
+                        data-tech={tech.label.toLowerCase()}
                         style={{
                             left: `${20 + index * 60}%`,
                             top: `${30 + index * 40}%`,
