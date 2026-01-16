@@ -1,15 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Code, Heart, Github, Linkedin, Mail } from 'lucide-react'
+import { Code, Heart } from 'lucide-react'
+import { contactDetails, socialLinks } from '../data/contact'
 
 const Footer: React.FC = () => {
     const currentYear = new Date().getFullYear()
-
-    const socialLinks = [
-        { icon: Github, href: 'https://github.com/NicholasLina', label: 'GitHub' },
-        { icon: Linkedin, href: 'https://www.linkedin.com/in/nick-lina-87bb92164/', label: 'LinkedIn' },
-        { icon: Mail, href: 'mailto:nicktlina@gmail.com', label: 'Email' },
-    ]
 
     const quickLinks = [
         { name: 'About', href: '#about' },
@@ -85,9 +80,9 @@ const Footer: React.FC = () => {
                     >
                         <h3 className="text-lg font-semibold text-white">Get In Touch</h3>
                         <div className="space-y-2">
-                            <p className="text-gray-400">nicktlina@gmail.com</p>
-                            <p className="text-gray-400">+1 (416) 414-2856</p>
-                            <p className="text-gray-400">Markham, ON</p>
+                            <p className="text-gray-400">{contactDetails.email}</p>
+                            <p className="text-gray-400">{contactDetails.phone}</p>
+                            <p className="text-gray-400">{contactDetails.location}</p>
                         </div>
                     </motion.div>
                 </div>
