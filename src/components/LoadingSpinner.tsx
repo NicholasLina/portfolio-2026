@@ -18,23 +18,14 @@ const LoadingSpinner: React.FC = () => {
         <motion.div
             initial={{ opacity: 1 }}
             animate={{ opacity: 0 }}
-            transition={{ delay: 1.5, duration: 0.5 }}
-            className="fixed inset-0 bg-dark-900 flex items-center justify-center z-50"
+            transition={{ delay: 1.5, duration: 0.3 }}
+            className="fixed inset-0 bg-dark-50 flex items-center justify-center z-50"
         >
             <div className="text-center">
-                <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                    className="w-16 h-16 border-4 border-primary-500/30 border-t-primary-500 rounded-full mx-auto mb-4"
-                />
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className="text-xl font-semibold gradient-text"
-                >
-                    Loading Portfolio...
-                </motion.h2>
+                <div className="w-12 h-12 border border-dark-900 border-t-transparent animate-spin mx-auto mb-4" />
+                <h2 className="text-xs font-mono tracking-wider text-dark-500">
+                    LOADING
+                </h2>
             </div>
         </motion.div>
     )

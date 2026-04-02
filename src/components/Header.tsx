@@ -22,112 +22,93 @@ const Header: React.FC = () => {
     ]
 
     return (
-        <motion.header
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                ? 'glass-effect shadow-lg backdrop-blur-md'
-                : 'bg-transparent'
+        <header
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${isScrolled
+                ? 'bg-white border-b border-dark-200'
+                : 'bg-dark-50'
                 }`}
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
-                    <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        className="flex items-center space-x-2"
-                    >
-                        <Code className="h-8 w-8 text-primary-500" />
-                        <span className="text-xl font-bold gradient-text">Nick Lina</span>
-                    </motion.div>
+                    <div className="flex items-center space-x-3">
+                        <span className="text-sm font-mono tracking-tight">NL</span>
+                    </div>
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex items-center space-x-8">
-                        {navItems.map((item) => (
-                            <motion.a
+                        {navItems.map((item, i) => (
+                            <a
                                 key={item.name}
                                 href={item.href}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="text-gray-300 hover:text-white transition-colors duration-200 font-medium"
+                                className="text-dark-900 font-mono text-xs tracking-wider hover:text-dark-600 transition-colors duration-200"
                             >
+                                <span className="text-dark-400 mr-2">{String(i + 1).padStart(2, '0')}</span>
                                 {item.name}
-                            </motion.a>
+                            </a>
                         ))}
                     </nav>
 
                     {/* Social Links */}
                     <div className="hidden md:flex items-center space-x-4">
                         {socialLinks.map((social) => (
-                            <motion.a
+                            <a
                                 key={social.label}
                                 href={social.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                whileHover={{ scale: 1.1, rotate: 5 }}
-                                whileTap={{ scale: 0.9 }}
-                                className="text-gray-400 hover:text-primary-500 transition-colors duration-200"
+                                className="text-dark-600 hover:text-dark-900 transition-colors duration-200"
                                 aria-label={social.label}
                             >
-                                <social.icon className="h-5 w-5" />
-                            </motion.a>
+                                <social.icon className="h-4 w-4" />
+                            </a>
                         ))}
                     </div>
 
                     {/* Mobile menu button */}
-                    <motion.button
-                        whileTap={{ scale: 0.95 }}
+                    <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:hidden text-gray-300 hover:text-white transition-colors duration-200"
+                        className="md:hidden text-dark-900 hover:text-dark-600 transition-colors duration-200"
                         aria-label="Toggle mobile menu"
                     >
-                        {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-                    </motion.button>
+                        {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                    </button>
                 </div>
 
                 {/* Mobile Navigation */}
-                <motion.div
-                    initial={false}
-                    animate={{
-                        height: isMobileMenuOpen ? 'auto' : 0,
-                        opacity: isMobileMenuOpen ? 1 : 0,
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="md:hidden overflow-hidden"
+                <div
+                    className={`md:hidden overflow-hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 border-t border-dark-200' : 'max-h-0'}`}
                 >
-                    <div className="py-4 space-y-4">
-                        {navItems.map((item) => (
-                            <motion.a
+                    <div className="py-4 space-y-3">
+                        {navItems.map((item, i) => (
+                            <a
                                 key={item.name}
                                 href={item.href}
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                whileHover={{ x: 10 }}
-                                className="block text-gray-300 hover:text-white transition-colors duration-200 font-medium"
+                                className="block text-dark-900 hover:text-dark-600 font-mono text-xs tracking-wider py-2"
                             >
+                                <span className="text-dark-400 mr-2">{String(i + 1).padStart(2, '0')}</span>
                                 {item.name}
-                            </motion.a>
+                            </a>
                         ))}
-                        <div className="flex space-x-4 pt-4">
+                        <div className="flex space-x-4 pt-4 border-t border-dark-200">
                             {socialLinks.map((social) => (
-                                <motion.a
+                                <a
                                     key={social.label}
                                     href={social.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.9 }}
-                                    className="text-gray-400 hover:text-primary-500 transition-colors duration-200"
+                                    className="text-dark-600 hover:text-dark-900 transition-colors duration-200"
                                     aria-label={social.label}
                                 >
-                                    <social.icon className="h-5 w-5" />
-                                </motion.a>
+                                    <social.icon className="h-4 w-4" />
+                                </a>
                             ))}
                         </div>
                     </div>
-                </motion.div>
+                </div>
             </div>
-        </motion.header>
+        </header>
     )
 }
 
