@@ -4,12 +4,12 @@
 
 @layer base {
     * {
-        @apply border-gray-700;
+        @apply border-dark-900;
     }
 
     body {
-        @apply bg-dark-900 text-white font-sans antialiased;
-        font-feature-settings: "rlig" 1, "calt" 1;
+        @apply bg-white text-dark-900 font-sans;
+        font-feature-settings: "ss01" 1;
     }
 
     html {
@@ -19,40 +19,37 @@
 
 @layer components {
     .gradient-text {
-        @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent;
+        @apply text-dark-900;
     }
 
     .glass-effect {
-        @apply bg-white/5 backdrop-blur-md border border-white/10;
+        @apply bg-white border-4 border-dark-900;
     }
 
     .tech-grid {
-        background-image:
-            linear-gradient(rgba(14, 165, 233, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(14, 165, 233, 0.1) 1px, transparent 1px);
-        background-size: 20px 20px;
+        background: white;
     }
 
     .code-block {
-        @apply bg-dark-800 border border-dark-700 rounded-lg p-4 font-mono text-sm;
+        @apply bg-dark-100 border-4 border-dark-900 p-4 font-mono text-sm;
     }
 
     .btn-primary {
-        @apply bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-primary-500/25;
+        @apply bg-primary-600 text-white font-bold px-8 py-4 border-4 border-dark-900 transition-all duration-150 hover:translate-x-1 hover:translate-y-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
     }
 
     .btn-secondary {
-        @apply glass-effect text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 hover:bg-white/10 hover:scale-105;
+        @apply bg-white text-dark-900 font-bold px-8 py-4 border-4 border-dark-900 transition-all duration-150 hover:translate-x-1 hover:translate-y-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
     }
 }
 
 @layer utilities {
     .text-shadow {
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        text-shadow: none;
     }
 
     .text-shadow-lg {
-        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        text-shadow: none;
     }
 }
 

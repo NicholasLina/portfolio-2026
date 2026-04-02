@@ -69,79 +69,52 @@ const About: React.FC = () => {
     }
 
     return (
-        <section id="about" className="py-20 relative">
+        <section id="about" className="py-20 relative bg-dark-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <motion.div
-                    ref={ref}
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    className="text-center mb-16"
-                >
-                    <motion.h2
-                        variants={itemVariants}
-                        className="text-4xl md:text-5xl font-bold mb-6"
-                    >
-                        <span className="gradient-text">About Me</span>
-                    </motion.h2>
-                    <motion.p
-                        variants={itemVariants}
-                        className="text-md md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
-                    >
+                <div ref={ref} className="mb-16">
+                    <h2 className="text-5xl md:text-7xl font-bold mb-8 uppercase tracking-tight">
+                        About Me
+                    </h2>
+                    <div className="w-24 h-2 bg-primary-600 mb-8" />
+                    <p className="text-base md:text-lg text-dark-900 max-w-3xl leading-relaxed mb-6 border-l-4 border-dark-900 pl-6">
                         I design and build reliable full-stack systems with an emphasis on security, maintainability, and scalability. My expertise spans modern React frontends, robust APIs, and cloud-based infrastructure, with a strong focus on type safety, testing, and CI/CD pipelines.
-                    </motion.p>
-                    <br></br>
-                    <motion.p
-                        variants={itemVariants}
-                        className="text-md md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
-                    >
+                    </p>
+                    <p className="text-base md:text-lg text-dark-900 max-w-3xl leading-relaxed border-l-4 border-dark-900 pl-6">
                         I've delivered internal tools and production applications across enterprise and agency environments, working closely with product, design, and compliance teams to transform complex requirements into practical, high-quality solutions.
-                    </motion.p>
-                </motion.div>
+                    </p>
+                </div>
 
                 {/* Skills Grid */}
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
-                >
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
                     {skills.map((skill) => (
-                        <motion.div
+                        <div
                             key={skill.category}
-                            variants={itemVariants}
-                            whileHover={{ scale: 1.05, y: -5 }}
-                            className="glass-effect p-6 rounded-xl group"
+                            className="bg-white border-4 border-dark-900 p-8 hover:translate-x-1 hover:translate-y-1 transition-transform duration-150 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                         >
-                            <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${skill.color} p-3 mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                                <skill.icon className="w-full h-full text-white" />
+                            <div className="w-16 h-16 bg-primary-600 border-4 border-dark-900 flex items-center justify-center mb-6">
+                                <skill.icon className="w-8 h-8 text-white" />
                             </div>
-                            <h3 className="text-xl font-semibold mb-4 text-white">{skill.category}</h3>
-                            <div className="space-y-2">
+                            <h3 className="text-2xl font-bold mb-6 uppercase tracking-tight">{skill.category}</h3>
+                            <div className="space-y-3">
                                 {skill.technologies.map((tech) => (
                                     <div
                                         key={tech}
-                                        className="flex items-center text-sm text-gray-400 group-hover:text-white transition-colors duration-200"
+                                        className="flex items-center text-sm font-mono font-bold uppercase"
                                     >
-                                        <ChevronRight className="w-4 h-4 mr-2 text-primary-500" />
+                                        <div className="w-2 h-2 bg-dark-900 mr-3" />
                                         {tech}
                                     </div>
                                 ))}
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
 
                 {/* Experience & Achievements */}
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    className="grid grid-cols-1 lg:grid-cols-2 gap-12"
-                >
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     {/* Experience */}
-                    <motion.div variants={itemVariants} className="space-y-6">
-                        <h3 className="text-2xl font-bold text-white mb-6">Experience</h3>
+                    <div className="space-y-6">
+                        <h3 className="text-3xl font-bold uppercase tracking-tight mb-8">Experience</h3>
                         <div className="space-y-6">
                             {[
                                 {
@@ -163,56 +136,53 @@ const About: React.FC = () => {
                                     description: 'Taught foundational programming concepts, problem-solving, and software logic through hands-on lessons and structured curricula.'
                                 }
                             ].map((exp, index) => (
-                                <motion.div
+                                <div
                                     key={index}
-                                    whileHover={{ x: 10 }}
-                                    className="glass-effect p-6 rounded-lg border-l-4 border-primary-500"
+                                    className="bg-white p-6 border-4 border-dark-900 hover:translate-x-1 hover:translate-y-1 transition-transform duration-150 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
                                 >
-                                    <div className="flex justify-between items-start mb-2">
-                                        <h4 className="text-lg font-semibold text-white">{exp.title}</h4>
-                                        <span className="text-sm text-gray-400">{exp.period}</span>
+                                    <div className="flex justify-between items-start mb-3 flex-wrap gap-2">
+                                        <h4 className="text-lg font-bold uppercase">{exp.title}</h4>
+                                        <span className="text-sm font-mono font-bold bg-dark-900 text-white px-3 py-1">{exp.period}</span>
                                     </div>
-                                    <p className="text-primary-400 font-medium mb-2">{exp.company}</p>
-                                    <p className="text-gray-400">{exp.description}</p>
-                                </motion.div>
+                                    <p className="text-primary-600 font-bold mb-3 uppercase text-sm tracking-wide">{exp.company}</p>
+                                    <p className="text-dark-700 leading-relaxed">{exp.description}</p>
+                                </div>
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Achievements */}
-                    <motion.div variants={itemVariants} className="space-y-6">
-                        <h3 className="text-2xl font-bold text-white mb-6">Key Achievements</h3>
+                    <div className="space-y-6">
+                        <h3 className="text-3xl font-bold uppercase tracking-tight mb-8">Key Achievements</h3>
                         <div className="space-y-4">
                             {achievements.map((achievement, index) => (
-                                <motion.div
+                                <div
                                     key={index}
-                                    whileHover={{ scale: 1.02 }}
-                                    className="flex items-center space-x-4 glass-effect p-4 rounded-lg"
+                                    className="flex items-start space-x-4 bg-white p-5 border-4 border-dark-900"
                                 >
-                                    <achievement.icon className={`w-6 h-6 ${achievement.color} flex-shrink-0`} />
-                                    <div className="flex flex-col">
-                                        <p className="text-gray-300 font-bold">{achievement.text}</p>
-                                        <p className="text-gray-400 text-sm">{achievement.subtext}</p>
+                                    <div className="w-12 h-12 bg-primary-600 border-4 border-dark-900 flex items-center justify-center flex-shrink-0">
+                                        <achievement.icon className="w-6 h-6 text-white" />
                                     </div>
-                                </motion.div>
+                                    <div className="flex flex-col">
+                                        <p className="text-dark-900 font-bold mb-1 uppercase text-sm tracking-wide">{achievement.text}</p>
+                                        <p className="text-dark-700 text-sm leading-relaxed">{achievement.subtext}</p>
+                                    </div>
+                                </div>
                             ))}
                         </div>
 
                         {/* Personal Touch */}
-                        <motion.div
-                            whileHover={{ scale: 1.02 }}
-                            className="glass-effect p-6 rounded-lg mt-8"
-                        >
-                            <h4 className="text-lg font-semibold text-white mb-3">Beyond Code</h4>
-                            <p className="text-gray-400 leading-relaxed">
+                        <div className="bg-dark-900 text-white p-6 border-4 border-dark-900 mt-8">
+                            <h4 className="text-xl font-bold mb-4 uppercase tracking-tight">Beyond Code</h4>
+                            <p className="text-dark-100 leading-relaxed mb-4">
                                 When I'm not coding, you'll find me in the backcountry—hiking, camping, and exploring. Nature helps me reset, think clearly, and see the elegance in systems.
                             </p>
-                            <p className="text-gray-400 leading-relaxed mt-4">
+                            <p className="text-dark-100 leading-relaxed">
                                 I'm also a musician, and the creativity, collaboration, and iterative mindset it requires shapes how I tackle challenges and innovate in my work.
                             </p>
-                        </motion.div>
-                    </motion.div>
-                </motion.div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     )

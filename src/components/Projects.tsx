@@ -70,45 +70,27 @@ const Projects: React.FC = () => {
     }
 
     return (
-        <section id="projects" className="py-20 relative">
+        <section id="projects" className="py-20 relative bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <motion.div
-                    ref={ref}
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    className="text-center mb-16"
-                >
-                    <motion.h2
-                        variants={itemVariants}
-                        className="text-4xl md:text-5xl font-bold mb-6"
-                    >
-                        <span className="gradient-text">Featured Projects</span>
-                    </motion.h2>
-                    <motion.p
-                        variants={itemVariants}
-                        className="text-md md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
-                    >
+                <div ref={ref} className="mb-16">
+                    <h2 className="text-5xl md:text-7xl font-bold mb-8 uppercase tracking-tight">
+                        Featured Projects
+                    </h2>
+                    <div className="w-24 h-2 bg-primary-600 mb-8" />
+                    <p className="text-base md:text-lg text-dark-900 max-w-3xl leading-relaxed border-l-4 border-dark-900 pl-6">
                         A selection of projects demonstrating system design, frontend architecture, and reliable production-ready code.
-                    </motion.p>
-                </motion.div>
+                    </p>
+                </div>
 
                 {/* Projects Grid */}
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project) => (
-                        <motion.div
+                        <div
                             key={project.id}
-                            variants={itemVariants}
-                            whileHover={{ y: -10, scale: 1.02 }}
-                            className={`glass-effect rounded-xl overflow-hidden group`}
+                            className="bg-white border-4 border-dark-900 overflow-hidden hover:translate-x-1 hover:translate-y-1 transition-transform duration-150 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                         >
                             {/* Project Image */}
-                            <div className="relative h-48 bg-gradient-to-br from-primary-500/20 to-primary-600/20 overflow-hidden">
+                            <div className="relative h-48 bg-dark-100 overflow-hidden border-b-4 border-dark-900">
                                 {project.image ? (
                                     <LazyImage
                                         src={project.image}
@@ -119,85 +101,64 @@ const Projects: React.FC = () => {
                                         }
                                         sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                                         alt={`${project.title} preview`}
-                                        className="w-full h-full"
+                                        className="w-full h-full object-cover"
                                     />
                                 ) : (
-                                    <>
-                                        <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-transparent" />
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <Code className="w-16 h-16 text-primary-500/50" />
-                                        </div>
-                                    </>
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <Code className="w-16 h-16 text-dark-400" />
+                                    </div>
                                 )}
                             </div>
 
                             {/* Project Content */}
                             <div className="p-6">
-                                <div className="flex items-center justify-between mb-3">
-                                    <h3 className="text-xl font-bold text-white group-hover:text-primary-400 transition-colors duration-300">
-                                        {project.title}
-                                    </h3>
-                                </div>
+                                <h3 className="text-2xl font-bold mb-3 uppercase tracking-tight">
+                                    {project.title}
+                                </h3>
 
-                                <p className="text-gray-400 mb-4 leading-relaxed text-sm">
+                                <p className="text-dark-700 mb-6 leading-relaxed text-sm">
                                     {project.description}
                                 </p>
 
                                 {/* Technologies */}
-                                <div className="flex flex-wrap gap-2 mb-4">
+                                <div className="flex flex-wrap gap-2 mb-6">
                                     {project.technologies.map((tech) => (
                                         <span
                                             key={tech}
-                                            className="px-3 py-1 bg-dark-800 text-gray-300 text-sm rounded-full"
+                                            className="px-3 py-1 bg-dark-900 text-white text-xs font-mono font-bold uppercase border-2 border-dark-900"
                                         >
                                             {tech}
                                         </span>
                                     ))}
                                 </div>
 
-                                {/* Stats */}
-                                {/* <div className="grid grid-cols-3 gap-4 mb-6 text-center">
-                                    {Object.entries(project.stats).map(([key, value]) => (
-                                        <div key={key} className="glass-effect p-3 rounded-lg">
-                                            <div className="text-lg font-bold text-primary-400">{value}</div>
-                                            <div className="text-xs text-gray-400 capitalize">{key}</div>
-                                        </div>
-                                    ))}
-                                </div> */}
-
                                 {/* Action Buttons */}
-                                <div className="flex space-x-3">
+                                <div className="flex flex-col gap-3">
                                     {project.showCode !== false && (
-                                        <motion.a
+                                        <a
                                             href={project.github}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="flex-1 btn-secondary flex items-center justify-center space-x-2"
+                                            className="btn-secondary flex items-center justify-center space-x-2 text-xs"
                                         >
                                             <Github className="w-4 h-4" />
-                                            <span>Code</span>
-                                        </motion.a>
+                                            <span>CODE</span>
+                                        </a>
                                     )}
-                                    <motion.a
+                                    <a
                                         href={project.live}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="flex-1 btn-primary flex items-center justify-center space-x-2"
+                                        className="btn-primary flex items-center justify-center space-x-2 text-xs"
                                     >
                                         <ExternalLink className="w-4 h-4" />
-                                        <span>Live Demo</span>
-                                    </motion.a>
+                                        <span>LIVE DEMO</span>
+                                    </a>
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
-
-                {/* View More Button */}
+                </div>
             </div>
         </section>
     )

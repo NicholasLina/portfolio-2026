@@ -89,102 +89,76 @@ const Contact: React.FC = () => {
     }
 
     return (
-        <section id="contact" className="py-20 relative">
+        <section id="contact" className="py-20 relative bg-dark-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <motion.div
-                    ref={ref}
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    className="text-center mb-16"
-                >
-                    <motion.h2
-                        variants={itemVariants}
-                        className="text-4xl md:text-5xl font-bold mb-6"
-                    >
-                        <span className="gradient-text">Get In Touch</span>
-                    </motion.h2>
-                    <motion.p
-                        variants={itemVariants}
-                        className="text-md md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
-                    >
-                        Have a project in mind or want to collaborate? I'd love to hear from you.
-                        <br></br>
-                        Let's build something amazing together.
-                    </motion.p>
-                </motion.div>
+                <div ref={ref} className="mb-16">
+                    <h2 className="text-5xl md:text-7xl font-bold mb-8 uppercase tracking-tight">
+                        Get In Touch
+                    </h2>
+                    <div className="w-24 h-2 bg-primary-600 mb-8" />
+                    <p className="text-base md:text-lg text-dark-900 max-w-3xl leading-relaxed border-l-4 border-dark-900 pl-6">
+                        Have a project in mind or want to collaborate? I'd love to hear from you. Let's build something amazing together.
+                    </p>
+                </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     {/* Contact Information */}
-                    <motion.div
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate={isInView ? "visible" : "hidden"}
-                        className="space-y-8"
-                    >
-                        <motion.div variants={itemVariants}>
-                            <h3 className="text-2xl font-bold text-white mb-6">Let's Connect</h3>
-                            <p className="text-gray-400 leading-relaxed mb-8">
+                    <div className="space-y-8">
+                        <div>
+                            <h3 className="text-3xl font-bold mb-6 uppercase tracking-tight">Let's Connect</h3>
+                            <p className="text-dark-700 leading-relaxed mb-8">
                                 I'm always interested in new opportunities and exciting projects.
                                 Whether you have a question or just want to say hi, I'll try my best to get back to you!
                             </p>
-                        </motion.div>
+                        </div>
 
                         {/* Contact Details */}
-                        <motion.div variants={itemVariants} className="space-y-4">
+                        <div className="space-y-4">
                             {contactInfo.map((info, index) => (
-                                <motion.a
+                                <a
                                     key={index}
                                     href={info.href}
-                                    whileHover={{ x: 10, scale: 1.02 }}
-                                    className="flex items-center space-x-4 glass-effect p-4 rounded-lg group"
+                                    className="flex items-center space-x-4 bg-white p-4 border-4 border-dark-900 hover:translate-x-1 hover:translate-y-1 transition-transform duration-150 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
                                 >
-                                    <div className="w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center group-hover:bg-primary-500/30 transition-colors duration-300">
-                                        <info.icon className="w-6 h-6 text-primary-500" />
+                                    <div className="w-12 h-12 bg-primary-600 border-4 border-dark-900 flex items-center justify-center">
+                                        <info.icon className="w-6 h-6 text-white" />
                                     </div>
                                     <div>
-                                        <p className="text-sm text-gray-400">{info.label}</p>
-                                        <p className="text-white font-medium">{info.value}</p>
+                                        <p className="text-xs font-mono font-bold uppercase text-dark-600">{info.label}</p>
+                                        <p className="text-dark-900 font-bold">{info.value}</p>
                                     </div>
-                                </motion.a>
+                                </a>
                             ))}
-                        </motion.div>
+                        </div>
 
                         {/* Social Links */}
-                        <motion.div variants={itemVariants} className="pt-8">
-                            <h4 className="text-lg font-semibold text-white mb-4">Follow Me</h4>
-                            <div className="flex space-x-4">
+                        <div className="pt-8">
+                            <h4 className="text-xl font-bold mb-4 uppercase tracking-tight">Follow Me</h4>
+                            <div className="flex space-x-3">
                                 {socialLinks.map((social, index) => (
-                                    <motion.a
+                                    <a
                                         key={index}
                                         href={social.href}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        whileHover={{ scale: 1.1, rotate: 5 }}
-                                        whileTap={{ scale: 0.9 }}
-                                        className="w-12 h-12 glass-effect rounded-lg flex items-center justify-center text-gray-400 hover:text-primary-500 transition-colors duration-300"
+                                        className="w-14 h-14 border-4 border-dark-900 flex items-center justify-center hover:bg-primary-600 hover:text-white transition-all duration-150"
                                         aria-label={social.label}
                                     >
                                         <social.icon className="w-6 h-6" />
-                                    </motion.a>
+                                    </a>
                                 ))}
                             </div>
-                        </motion.div>
-                    </motion.div>
+                        </div>
+                    </div>
 
                     {/* Contact Form */}
-                    <motion.div
-                        variants={itemVariants}
-                        initial="hidden"
-                        animate={isInView ? "visible" : "hidden"}
-                        className="glass-effect p-8 rounded-xl"
-                    >
-                        <h3 className="text-2xl font-bold text-white mb-6">Send Message</h3>
+                    <div className="bg-white p-8 border-4 border-dark-900 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                        <h3 className="text-3xl font-bold mb-8 uppercase tracking-tight">Send Message</h3>
 
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                                    <label htmlFor="name" className="block text-xs font-mono font-bold uppercase mb-2">
                                         Name *
                                     </label>
                                     <input
@@ -194,12 +168,12 @@ const Contact: React.FC = () => {
                                         value={formData.name}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-4 py-3 bg-dark-800 border border-dark-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                                        className="w-full px-4 py-3 bg-white border-4 border-dark-900 text-dark-900 placeholder-dark-400 focus:outline-none focus:border-primary-600 transition-all duration-150"
                                         placeholder="Your name"
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                                    <label htmlFor="email" className="block text-xs font-mono font-bold uppercase mb-2">
                                         Email *
                                     </label>
                                     <input
@@ -209,14 +183,14 @@ const Contact: React.FC = () => {
                                         value={formData.email}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-4 py-3 bg-dark-800 border border-dark-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                                        className="w-full px-4 py-3 bg-white border-4 border-dark-900 text-dark-900 placeholder-dark-400 focus:outline-none focus:border-primary-600 transition-all duration-150"
                                         placeholder="your@email.com"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                                <label htmlFor="subject" className="block text-xs font-mono font-bold uppercase mb-2">
                                     Subject *
                                 </label>
                                 <input
@@ -226,13 +200,13 @@ const Contact: React.FC = () => {
                                     value={formData.subject}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full px-4 py-3 bg-dark-800 border border-dark-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                                    className="w-full px-4 py-3 bg-white border-4 border-dark-900 text-dark-900 placeholder-dark-400 focus:outline-none focus:border-primary-600 transition-all duration-150"
                                     placeholder="What's this about?"
                                 />
                             </div>
 
                             <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                                <label htmlFor="message" className="block text-xs font-mono font-bold uppercase mb-2">
                                     Message *
                                 </label>
                                 <textarea
@@ -242,55 +216,45 @@ const Contact: React.FC = () => {
                                     onChange={handleInputChange}
                                     required
                                     rows={5}
-                                    className="w-full px-4 py-3 bg-dark-800 border border-dark-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 resize-none"
+                                    className="w-full px-4 py-3 bg-white border-4 border-dark-900 text-dark-900 placeholder-dark-400 focus:outline-none focus:border-primary-600 transition-all duration-150 resize-none"
                                     placeholder="How can I help you?"
                                 />
                             </div>
 
                             {/* Form Status */}
                             {formStatus === 'success' && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="flex items-center space-x-2 text-green-500"
-                                >
+                                <div className="flex items-center space-x-2 text-green-600 font-bold">
                                     <CheckCircle className="w-5 h-5" />
                                     <span>Message sent successfully!</span>
-                                </motion.div>
+                                </div>
                             )}
 
                             {formStatus === 'error' && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="flex items-center space-x-2 text-red-500"
-                                >
+                                <div className="flex items-center space-x-2 text-red-600 font-bold">
                                     <AlertCircle className="w-5 h-5" />
                                     <span>Failed to send message. Please try again.</span>
-                                </motion.div>
+                                </div>
                             )}
 
-                            <motion.button
+                            <button
                                 type="submit"
                                 disabled={formStatus === 'sending'}
-                                whileHover={{ scale: formStatus === 'sending' ? 1 : 1.05 }}
-                                whileTap={{ scale: formStatus === 'sending' ? 1 : 0.95 }}
                                 className="w-full btn-primary flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 {formStatus === 'sending' ? (
                                     <>
-                                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                        <span>Sending...</span>
+                                        <div className="w-5 h-5 border-4 border-white/30 border-t-white animate-spin" />
+                                        <span>SENDING...</span>
                                     </>
                                 ) : (
                                     <>
                                         <Send className="w-5 h-5" />
-                                        <span>Send Message</span>
+                                        <span>SEND MESSAGE</span>
                                     </>
                                 )}
-                            </motion.button>
+                            </button>
                         </form>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>
