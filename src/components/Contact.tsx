@@ -80,7 +80,7 @@ const Contact: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-12 gap-12">
+                <div className="grid grid-cols-12 gap-6 lg:gap-12">
                     {/* Contact Information */}
                     <div className="col-span-12 lg:col-span-5 space-y-8">
                         <div>
@@ -100,12 +100,12 @@ const Contact: React.FC = () => {
                                     (isStatic ? '' : ' hover:border-dark-900')
                                 const inner = (
                                     <>
-                                        <div className="w-10 h-10 border border-dark-900 flex items-center justify-center">
+                                        <div className="w-10 h-10 border border-dark-900 flex items-center justify-center flex-shrink-0">
                                             <info.icon className="w-5 h-5 text-dark-900" />
                                         </div>
-                                        <div>
+                                        <div className="min-w-0 flex-1">
                                             <p className="text-xs font-mono text-dark-500 tracking-wider">{info.label}</p>
-                                            <p className="text-dark-900 font-mono text-sm">{info.value}</p>
+                                            <p className="text-dark-900 font-mono text-sm break-all">{info.value}</p>
                                         </div>
                                     </>
                                 )

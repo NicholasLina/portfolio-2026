@@ -88,7 +88,7 @@ const About: React.FC = () => {
                 </div>
 
                 {/* Experience & Achievements */}
-                <div className="grid grid-cols-12 gap-12">
+                <div className="grid grid-cols-12 gap-6 lg:gap-12">
                     {/* Experience */}
                     <div className="col-span-12 lg:col-span-7 space-y-8">
                         <div className="flex items-center gap-4">
@@ -120,9 +120,9 @@ const About: React.FC = () => {
                                     key={index}
                                     className="bg-white border border-dark-200 p-6 hover:border-dark-900 transition-colors duration-200"
                                 >
-                                    <div className="flex justify-between items-start mb-3 gap-4">
+                                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 gap-2 sm:gap-4">
                                         <h4 className="text-base font-light">{exp.title}</h4>
-                                        <span className="text-xs font-mono text-dark-500 whitespace-nowrap">{exp.period}</span>
+                                        <span className="text-xs font-mono text-dark-500 sm:whitespace-nowrap">{exp.period}</span>
                                     </div>
                                     <p className="text-dark-900 font-mono text-xs mb-3 tracking-wider">{exp.company}</p>
                                     <p className="text-dark-700 text-sm leading-relaxed font-sans">{exp.description}</p>
@@ -145,7 +145,7 @@ const About: React.FC = () => {
                                 >
                                     <div className="flex items-start gap-4">
                                         <achievement.icon className="w-5 h-5 text-dark-900 flex-shrink-0 mt-1" />
-                                        <div className="flex flex-col space-y-2">
+                                        <div className="flex flex-col space-y-2 min-w-0 flex-1">
                                             <p className="text-dark-900 font-light text-sm leading-tight">{achievement.text}</p>
                                             <p className="text-dark-600 text-xs leading-relaxed font-sans">{achievement.subtext}</p>
                                         </div>
