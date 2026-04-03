@@ -16,12 +16,12 @@ const Hero: React.FC = () => {
                             </h1>
                             <div className="w-16 h-px bg-dark-900" />
                             <h2 className="text-2xl md:text-3xl font-light text-dark-600 tracking-tight">
-                                Full-stack Engineer
+                                Full-stack Software Engineer
                             </h2>
                         </div>
 
                         <p className="text-sm md:text-base text-dark-700 max-w-2xl leading-relaxed font-sans">
-                            Full-stack software engineer with 7+ years of experience building secure, scalable web applications and internal tools across enterprise and agency environments. Strong expertise in React, TypeScript, RESTful APIs, and cloud platforms.
+                            8+ years of experience building secure, scalable web applications and internal tools in enterprise and agency environments. Passionate about intuitive design, effective problem solving, and clearcommunication.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -37,10 +37,10 @@ const Hero: React.FC = () => {
                     {/* Right column - Tech stack */}
                     <div className="col-span-12 lg:col-span-4 space-y-6 lg:border-l border-dark-200 lg:pl-8">
                         <div className="font-mono text-xs text-dark-500 tracking-wider">
-                            TECH STACK
+                            SKILLS
                         </div>
                         <div className="space-y-3">
-                            {['React', 'TypeScript', 'MongoDB', 'Python', 'Linux', 'Docker'].map((tech, i) => (
+                            {['TypeScript', 'Python', 'PostgresQL', 'MongoDB', 'RESTful APIs', 'Automated Testing', 'CI/CD', 'System Design', 'Cloud Infrastructure'].map((tech, i) => (
                                 <div key={tech} className="flex items-center gap-3 text-sm">
                                     <span className="font-mono text-dark-400 text-xs w-8">{String(i + 1).padStart(2, '0')}</span>
                                     <span className="font-mono text-dark-900">{tech}</span>

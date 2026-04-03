@@ -26,7 +26,7 @@ const About: React.FC = () => {
         {
             category: 'Cloud & DevOps',
             icon: Cloud,
-            technologies: ['Docker', 'Grafana', 'CI/CD', 'GCP', 'Azure'],
+            technologies: ['AWS', 'System Design', 'GitHub Actions', 'CI/CD Pipelines', 'Security and Observability'],
             color: 'from-purple-500 to-pink-500'
         }
     ]
@@ -53,7 +53,7 @@ const About: React.FC = () => {
                         </h2>
                         <div className="w-12 h-px bg-dark-900" />
                         <p className="text-sm md:text-base text-dark-700 leading-relaxed font-sans">
-                            I design and build reliable full-stack systems with an emphasis on security, maintainability, and scalability. My expertise spans modern React frontends, robust APIs, and cloud-based infrastructure, with a strong focus on type safety, testing, and CI/CD pipelines.
+                            I design and build reliable full-stack systems with an emphasis on security, maintainability, and scalability. My expertise spans modern React frontends, robust APIs, and cloud-based infrastructure, with a strong focus on automation, testing, and CI/CD pipelines.
                         </p>
                         <p className="text-sm md:text-base text-dark-700 leading-relaxed font-sans">
                             I've delivered internal tools and production applications across enterprise and agency environments, working closely with product, design, and compliance teams to transform complex requirements into practical, high-quality solutions.
@@ -101,7 +101,7 @@ const About: React.FC = () => {
                                     title: 'Software Engineer, Cyber Risk',
                                     company: 'Deloitte',
                                     period: '2025 - Present',
-                                    description: 'Design and build secure, AI-driven internal tools supporting cyber incident response. Deliver compliant, well-tested React and TypeScript applications integrated with enterprise identity systems and internal APIs.'
+                                    description: 'Design and build secure, AI-driven internal tools supporting cyber incident response. Deliver compliant, well-tested React and TypeScript applications integrated with enterprise identity systems, internal APIs, and AI/ML models.'
                                 },
                                 {
                                     title: 'Full Stack Developer',
@@ -158,10 +158,10 @@ const About: React.FC = () => {
                         <div className="bg-dark-900 text-white border border-dark-900 p-6 mt-8">
                             <h4 className="text-sm font-mono mb-4 tracking-wider">BEYOND CODE</h4>
                             <p className="text-dark-100 text-xs leading-relaxed mb-3 font-sans">
-                                When I'm not coding, you'll find me in the backcountry—hiking, camping, and exploring. Nature helps me reset, think clearly, and see the elegance in systems.
+                                When I'm not coding, you'll find me in the backcountry; hiking, camping, and exploring. Nature helps me reset, think clearly, and see the elegance in systems.
                             </p>
                             <p className="text-dark-100 text-xs leading-relaxed font-sans">
-                                I'm also a musician, and the creativity, collaboration, and iterative mindset it requires shapes how I tackle challenges and innovate in my work.
+                                I'm also a musician! The creativity, collaboration, and iterative mindset that my music requires shapes how I tackle challenges and innovate in my work.
                             </p>
                         </div>
                     </div>

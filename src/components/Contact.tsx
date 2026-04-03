@@ -87,27 +87,38 @@ const Contact: React.FC = () => {
                             <h3 className="text-lg font-light mb-6 tracking-tight">Let's Connect</h3>
                             <p className="text-dark-700 text-sm leading-relaxed mb-8 font-sans">
                                 I'm always interested in new opportunities and exciting projects.
-                                Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                                Whether you have a question or just want to say hi, I'll try my best to get back to you within 48 hours!
                             </p>
                         </div>
 
                         {/* Contact Details */}
                         <div className="space-y-4">
-                            {contactInfo.map((info, index) => (
-                                <a
-                                    key={index}
-                                    href={info.href}
-                                    className="flex items-center gap-4 bg-dark-50 border border-dark-200 p-4 hover:border-dark-900 transition-colors duration-200"
-                                >
-                                    <div className="w-10 h-10 border border-dark-900 flex items-center justify-center">
-                                        <info.icon className="w-5 h-5 text-dark-900" />
+                            {contactInfo.map((info, index) => {
+                                const isStatic = info.href === '#'
+                                const cardClass =
+                                    'flex items-center gap-4 bg-dark-50 border border-dark-200 p-4 transition-colors duration-200' +
+                                    (isStatic ? '' : ' hover:border-dark-900')
+                                const inner = (
+                                    <>
+                                        <div className="w-10 h-10 border border-dark-900 flex items-center justify-center">
+                                            <info.icon className="w-5 h-5 text-dark-900" />
+                                        </div>
+                                        <div>
+                                            <p className="text-xs font-mono text-dark-500 tracking-wider">{info.label}</p>
+                                            <p className="text-dark-900 font-mono text-sm">{info.value}</p>
+                                        </div>
+                                    </>
+                                )
+                                return isStatic ? (
+                                    <div key={index} className={cardClass}>
+                                        {inner}
                                     </div>
-                                    <div>
-                                        <p className="text-xs font-mono text-dark-500 tracking-wider">{info.label}</p>
-                                        <p className="text-dark-900 font-mono text-sm">{info.value}</p>
-                                    </div>
-                                </a>
-                            ))}
+                                ) : (
+                                    <a key={index} href={info.href} className={cardClass}>
+                                        {inner}
+                                    </a>
+                                )
+                            })}
                         </div>
 
                         {/* Social Links */}

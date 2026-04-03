@@ -53,10 +53,6 @@ const Projects: React.FC = () => {
                         <h2 className="text-4xl md:text-6xl font-light tracking-tight leading-tight">
                             Featured Projects
                         </h2>
-                        <div className="w-12 h-px bg-dark-900" />
-                        <p className="text-sm md:text-base text-dark-700 leading-relaxed font-sans">
-                            A selection of projects demonstrating system design, frontend architecture, and reliable production-ready code.
-                        </p>
                     </div>
                 </div>
 
