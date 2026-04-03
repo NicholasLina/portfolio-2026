@@ -39,7 +39,7 @@ describe('Contact form', () => {
         expect(screen.getByLabelText(/email \*/i)).toBeInTheDocument()
         expect(screen.getByLabelText(/subject \*/i)).toBeInTheDocument()
         expect(screen.getByLabelText(/message \*/i)).toBeInTheDocument()
-        expect(screen.getByRole('button', { name: /send message/i })).toBeInTheDocument()
+        expect(screen.getByRole('button', { name: /^send$/i })).toBeInTheDocument()
     })
 
     it('submits the form and calls EmailJS with expected payload', async () => {
@@ -47,7 +47,7 @@ describe('Contact form', () => {
 
         render(<Contact />)
         await fillForm()
-        await userEvent.click(screen.getByRole('button', { name: /send message/i }))
+        await userEvent.click(screen.getByRole('button', { name: /^send$/i }))
 
         await waitFor(() => {
             expect(mockSend).toHaveBeenCalledTimes(1)
@@ -80,9 +80,9 @@ describe('Contact form', () => {
 
         render(<Contact />)
         await fillForm()
-        await userEvent.click(screen.getByRole('button', { name: /send message/i }))
+        await userEvent.click(screen.getByRole('button', { name: /^send$/i }))
 
-        expect(await screen.findByText(/failed to send message/i)).toBeInTheDocument()
+        expect(await screen.findByText(/failed to send/i)).toBeInTheDocument()
         expect(mockSend).not.toHaveBeenCalled()
 
         consoleError.mockRestore()

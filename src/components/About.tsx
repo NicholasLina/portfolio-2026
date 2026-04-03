@@ -1,7 +1,4 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
 import {
     Code,
     Database,
@@ -10,13 +7,9 @@ import {
     Shield,
     Users,
     Award,
-    ChevronRight
 } from 'lucide-react'
 
 const About: React.FC = () => {
-    const ref = useRef(null)
-    const isInView = useInView(ref, { once: true, margin: '-100px' })
-
     const skills = [
         {
             category: 'Frontend',
@@ -45,33 +38,10 @@ const About: React.FC = () => {
         { icon: Award, text: 'Improved reliability through testing & documentation', subtext: 'Introduced automated UI tests, API documentation, and system diagrams to support long-term maintainability.', color: 'text-purple-500' },
     ]
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.1,
-            },
-        },
-    }
-
-    const itemVariants = {
-        hidden: { y: 50, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.6,
-                ease: 'easeOut',
-            },
-        },
-    }
-
     return (
         <section id="about" className="py-24 relative bg-white border-y border-dark-200">
             <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16">
-                <div ref={ref} className="mb-16 grid grid-cols-12 gap-6">
+                <div className="mb-16 grid grid-cols-12 gap-6">
                     <div className="col-span-12 lg:col-span-3">
                         <div className="font-mono text-xs text-dark-500 tracking-wider">
                             002 — ABOUT
@@ -93,7 +63,7 @@ const About: React.FC = () => {
 
                 {/* Skills Grid */}
                 <div className="grid grid-cols-12 gap-6 mb-16">
-                    {skills.map((skill, idx) => (
+                    {skills.map((skill) => (
                         <div
                             key={skill.category}
                             className="col-span-12 md:col-span-4 bg-white border border-dark-200 p-8 hover:border-dark-900 transition-colors duration-200"

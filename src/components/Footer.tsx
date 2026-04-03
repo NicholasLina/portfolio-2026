@@ -1,6 +1,4 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-import { Code, Heart } from 'lucide-react'
 import { contactDetails, socialLinks } from '../data/contact'
 
 const Footer: React.FC = () => {

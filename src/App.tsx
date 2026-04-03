@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -7,9 +7,6 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import LoadingSpinner from './components/LoadingSpinner'
 import { isReducedMotion } from './utils/performance'
-
-// Lazy load heavy components for better performance
-const TechBackground = lazy(() => import('./components/TechBackground'))
 
 const App: React.FC = () => {
     useEffect(() => {

@@ -1,7 +1,4 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
 import {
     ExternalLink,
     Github,
@@ -10,9 +7,6 @@ import {
 import LazyImage from './LazyImage'
 
 const Projects: React.FC = () => {
-    const ref = useRef(null)
-    const isInView = useInView(ref, { once: true, margin: '-100px' })
-
     const projects = [
         {
             id: 1,
@@ -46,33 +40,10 @@ const Projects: React.FC = () => {
         }
     ]
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.1,
-            },
-        },
-    }
-
-    const itemVariants = {
-        hidden: { y: 50, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.6,
-                ease: 'easeOut',
-            },
-        },
-    }
-
     return (
         <section id="projects" className="py-24 relative bg-dark-50">
             <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16">
-                <div ref={ref} className="mb-16 grid grid-cols-12 gap-6">
+                <div className="mb-16 grid grid-cols-12 gap-6">
                     <div className="col-span-12 lg:col-span-3">
                         <div className="font-mono text-xs text-dark-500 tracking-wider">
                             003 — PROJECTS

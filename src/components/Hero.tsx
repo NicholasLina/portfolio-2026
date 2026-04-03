@@ -1,36 +1,6 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-import { ChevronDown, Code2, Zap } from 'lucide-react'
 
 const Hero: React.FC = () => {
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.3,
-            },
-        },
-    }
-
-    const itemVariants = {
-        hidden: { y: 50, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.6,
-                ease: 'easeOut',
-            },
-        },
-    }
-
-    const techIcons = [
-        { icon: Code2, label: 'Code' },
-        { icon: Zap, label: 'Performance' },
-    ]
-
     return (
         <section className="min-h-screen flex items-center relative pt-16 bg-dark-50">
             <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16 w-full">
