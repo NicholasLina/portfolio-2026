@@ -1,14 +1,9 @@
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import { Send, CheckCircle, AlertCircle } from 'lucide-react'
 import { contactInfo, socialLinks } from '../data/contact'
 
 const Contact: React.FC = () => {
-    const ref = useRef(null)
-    const isInView = useInView(ref, { once: true, margin: '-100px' })
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -65,127 +60,96 @@ const Contact: React.FC = () => {
         }
     }
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.1,
-            },
-        },
-    }
-
-    const itemVariants = {
-        hidden: { y: 50, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.6,
-                ease: 'easeOut',
-            },
-        },
-    }
-
     return (
-        <section id="contact" className="py-20 relative">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <motion.div
-                    ref={ref}
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    className="text-center mb-16"
-                >
-                    <motion.h2
-                        variants={itemVariants}
-                        className="text-4xl md:text-5xl font-bold mb-6"
-                    >
-                        <span className="gradient-text">Get In Touch</span>
-                    </motion.h2>
-                    <motion.p
-                        variants={itemVariants}
-                        className="text-md md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
-                    >
-                        Have a project in mind or want to collaborate? I'd love to hear from you.
-                        <br></br>
-                        Let's build something amazing together.
-                    </motion.p>
-                </motion.div>
+        <section id="contact" className="py-24 relative bg-white border-y border-dark-200">
+            <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16">
+                <div className="mb-16 grid grid-cols-12 gap-6">
+                    <div className="col-span-12 lg:col-span-3">
+                        <div className="font-mono text-xs text-dark-500 tracking-wider">
+                            004 — CONTACT
+                        </div>
+                    </div>
+                    <div className="col-span-12 lg:col-span-9 space-y-6">
+                        <h2 className="text-4xl md:text-6xl font-light tracking-tight leading-tight">
+                            Get In Touch
+                        </h2>
+                        <div className="w-12 h-px bg-dark-900" />
+                        <p className="text-sm md:text-base text-dark-700 leading-relaxed font-sans">
+                            Have a project in mind or want to collaborate? I'd love to hear from you. Let's build something amazing together.
+                        </p>
+                    </div>
+                </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="grid grid-cols-12 gap-12">
                     {/* Contact Information */}
-                    <motion.div
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate={isInView ? "visible" : "hidden"}
-                        className="space-y-8"
-                    >
-                        <motion.div variants={itemVariants}>
-                            <h3 className="text-2xl font-bold text-white mb-6">Let's Connect</h3>
-                            <p className="text-gray-400 leading-relaxed mb-8">
+                    <div className="col-span-12 lg:col-span-5 space-y-8">
+                        <div>
+                            <h3 className="text-lg font-light mb-6 tracking-tight">Let's Connect</h3>
+                            <p className="text-dark-700 text-sm leading-relaxed mb-8 font-sans">
                                 I'm always interested in new opportunities and exciting projects.
-                                Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                                Whether you have a question or just want to say hi, I'll try my best to get back to you within 48 hours!
                             </p>
-                        </motion.div>
+                        </div>
 
                         {/* Contact Details */}
-                        <motion.div variants={itemVariants} className="space-y-4">
-                            {contactInfo.map((info, index) => (
-                                <motion.a
-                                    key={index}
-                                    href={info.href}
-                                    whileHover={{ x: 10, scale: 1.02 }}
-                                    className="flex items-center space-x-4 glass-effect p-4 rounded-lg group"
-                                >
-                                    <div className="w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center group-hover:bg-primary-500/30 transition-colors duration-300">
-                                        <info.icon className="w-6 h-6 text-primary-500" />
+                        <div className="space-y-4">
+                            {contactInfo.map((info, index) => {
+                                const isStatic = info.href === '#'
+                                const cardClass =
+                                    'flex items-center gap-4 bg-dark-50 border border-dark-200 p-4 transition-colors duration-200' +
+                                    (isStatic ? '' : ' hover:border-dark-900')
+                                const inner = (
+                                    <>
+                                        <div className="w-10 h-10 border border-dark-900 flex items-center justify-center">
+                                            <info.icon className="w-5 h-5 text-dark-900" />
+                                        </div>
+                                        <div>
+                                            <p className="text-xs font-mono text-dark-500 tracking-wider">{info.label}</p>
+                                            <p className="text-dark-900 font-mono text-sm">{info.value}</p>
+                                        </div>
+                                    </>
+                                )
+                                return isStatic ? (
+                                    <div key={index} className={cardClass}>
+                                        {inner}
                                     </div>
-                                    <div>
-                                        <p className="text-sm text-gray-400">{info.label}</p>
-                                        <p className="text-white font-medium">{info.value}</p>
-                                    </div>
-                                </motion.a>
-                            ))}
-                        </motion.div>
+                                ) : (
+                                    <a key={index} href={info.href} className={cardClass}>
+                                        {inner}
+                                    </a>
+                                )
+                            })}
+                        </div>
 
                         {/* Social Links */}
-                        <motion.div variants={itemVariants} className="pt-8">
-                            <h4 className="text-lg font-semibold text-white mb-4">Follow Me</h4>
-                            <div className="flex space-x-4">
+                        <div className="pt-8 border-t border-dark-200">
+                            <h4 className="text-sm font-mono mb-4 tracking-wider text-dark-500">FOLLOW</h4>
+                            <div className="flex space-x-3">
                                 {socialLinks.map((social, index) => (
-                                    <motion.a
+                                    <a
                                         key={index}
                                         href={social.href}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        whileHover={{ scale: 1.1, rotate: 5 }}
-                                        whileTap={{ scale: 0.9 }}
-                                        className="w-12 h-12 glass-effect rounded-lg flex items-center justify-center text-gray-400 hover:text-primary-500 transition-colors duration-300"
+                                        className="w-10 h-10 border border-dark-200 flex items-center justify-center hover:border-dark-900 hover:bg-dark-50 transition-all duration-200"
                                         aria-label={social.label}
                                     >
-                                        <social.icon className="w-6 h-6" />
-                                    </motion.a>
+                                        <social.icon className="w-4 h-4" />
+                                    </a>
                                 ))}
                             </div>
-                        </motion.div>
-                    </motion.div>
+                        </div>
+                    </div>
 
                     {/* Contact Form */}
-                    <motion.div
-                        variants={itemVariants}
-                        initial="hidden"
-                        animate={isInView ? "visible" : "hidden"}
-                        className="glass-effect p-8 rounded-xl"
-                    >
-                        <h3 className="text-2xl font-bold text-white mb-6">Send Message</h3>
+                    <div className="col-span-12 lg:col-span-7 bg-dark-50 border border-dark-200 p-8">
+                        <h3 className="text-lg font-light mb-8 tracking-tight">Send Message</h3>
 
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                                        Name *
+                                    <label htmlFor="name" className="block text-xs font-mono mb-2 tracking-wider text-dark-500">
+                                        NAME *
                                     </label>
                                     <input
                                         type="text"
@@ -194,13 +158,13 @@ const Contact: React.FC = () => {
                                         value={formData.name}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-4 py-3 bg-dark-800 border border-dark-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                                        className="w-full px-4 py-3 bg-white border border-dark-200 text-dark-900 placeholder-dark-400 focus:outline-none focus:border-dark-900 transition-all duration-200 font-mono text-sm"
                                         placeholder="Your name"
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                                        Email *
+                                    <label htmlFor="email" className="block text-xs font-mono mb-2 tracking-wider text-dark-500">
+                                        EMAIL *
                                     </label>
                                     <input
                                         type="email"
@@ -209,15 +173,15 @@ const Contact: React.FC = () => {
                                         value={formData.email}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full px-4 py-3 bg-dark-800 border border-dark-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                                        className="w-full px-4 py-3 bg-white border border-dark-200 text-dark-900 placeholder-dark-400 focus:outline-none focus:border-dark-900 transition-all duration-200 font-mono text-sm"
                                         placeholder="your@email.com"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
-                                    Subject *
+                                <label htmlFor="subject" className="block text-xs font-mono mb-2 tracking-wider text-dark-500">
+                                    SUBJECT *
                                 </label>
                                 <input
                                     type="text"
@@ -226,14 +190,14 @@ const Contact: React.FC = () => {
                                     value={formData.subject}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full px-4 py-3 bg-dark-800 border border-dark-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                                    className="w-full px-4 py-3 bg-white border border-dark-200 text-dark-900 placeholder-dark-400 focus:outline-none focus:border-dark-900 transition-all duration-200 font-mono text-sm"
                                     placeholder="What's this about?"
                                 />
                             </div>
 
                             <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                                    Message *
+                                <label htmlFor="message" className="block text-xs font-mono mb-2 tracking-wider text-dark-500">
+                                    MESSAGE *
                                 </label>
                                 <textarea
                                     id="message"
@@ -241,56 +205,46 @@ const Contact: React.FC = () => {
                                     value={formData.message}
                                     onChange={handleInputChange}
                                     required
-                                    rows={5}
-                                    className="w-full px-4 py-3 bg-dark-800 border border-dark-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 resize-none"
+                                    rows={6}
+                                    className="w-full px-4 py-3 bg-white border border-dark-200 text-dark-900 placeholder-dark-400 focus:outline-none focus:border-dark-900 transition-all duration-200 resize-none font-mono text-sm"
                                     placeholder="How can I help you?"
                                 />
                             </div>
 
                             {/* Form Status */}
                             {formStatus === 'success' && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="flex items-center space-x-2 text-green-500"
-                                >
-                                    <CheckCircle className="w-5 h-5" />
-                                    <span>Message sent successfully!</span>
-                                </motion.div>
+                                <div className="flex items-center space-x-2 text-green-600 font-mono text-sm">
+                                    <CheckCircle className="w-4 h-4" />
+                                    <span>Message sent successfully</span>
+                                </div>
                             )}
 
                             {formStatus === 'error' && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="flex items-center space-x-2 text-red-500"
-                                >
-                                    <AlertCircle className="w-5 h-5" />
-                                    <span>Failed to send message. Please try again.</span>
-                                </motion.div>
+                                <div className="flex items-center space-x-2 text-red-600 font-mono text-sm">
+                                    <AlertCircle className="w-4 h-4" />
+                                    <span>Failed to send. Please try again</span>
+                                </div>
                             )}
 
-                            <motion.button
+                            <button
                                 type="submit"
                                 disabled={formStatus === 'sending'}
-                                whileHover={{ scale: formStatus === 'sending' ? 1 : 1.05 }}
-                                whileTap={{ scale: formStatus === 'sending' ? 1 : 0.95 }}
                                 className="w-full btn-primary flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 {formStatus === 'sending' ? (
                                     <>
-                                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                        <span>Sending...</span>
+                                        <div className="w-4 h-4 border-2 border-white/30 border-t-white animate-spin" />
+                                        <span>Sending</span>
                                     </>
                                 ) : (
                                     <>
-                                        <Send className="w-5 h-5" />
-                                        <span>Send Message</span>
+                                        <Send className="w-4 h-4" />
+                                        <span>Send</span>
                                     </>
                                 )}
-                            </motion.button>
+                            </button>
                         </form>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

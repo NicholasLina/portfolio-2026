@@ -1,7 +1,4 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
 import {
     Code,
     Database,
@@ -10,13 +7,9 @@ import {
     Shield,
     Users,
     Award,
-    ChevronRight
 } from 'lucide-react'
 
 const About: React.FC = () => {
-    const ref = useRef(null)
-    const isInView = useInView(ref, { once: true, margin: '-100px' })
-
     const skills = [
         {
             category: 'Frontend',
@@ -33,7 +26,7 @@ const About: React.FC = () => {
         {
             category: 'Cloud & DevOps',
             icon: Cloud,
-            technologies: ['Docker', 'Grafana', 'CI/CD', 'GCP', 'Azure'],
+            technologies: ['AWS', 'System Design', 'GitHub Actions', 'CI/CD Pipelines', 'Security and Observability'],
             color: 'from-purple-500 to-pink-500'
         }
     ]
@@ -45,110 +38,70 @@ const About: React.FC = () => {
         { icon: Award, text: 'Improved reliability through testing & documentation', subtext: 'Introduced automated UI tests, API documentation, and system diagrams to support long-term maintainability.', color: 'text-purple-500' },
     ]
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.1,
-            },
-        },
-    }
-
-    const itemVariants = {
-        hidden: { y: 50, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.6,
-                ease: 'easeOut',
-            },
-        },
-    }
-
     return (
-        <section id="about" className="py-20 relative">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <motion.div
-                    ref={ref}
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    className="text-center mb-16"
-                >
-                    <motion.h2
-                        variants={itemVariants}
-                        className="text-4xl md:text-5xl font-bold mb-6"
-                    >
-                        <span className="gradient-text">About Me</span>
-                    </motion.h2>
-                    <motion.p
-                        variants={itemVariants}
-                        className="text-md md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
-                    >
-                        I design and build reliable full-stack systems with an emphasis on security, maintainability, and scalability. My expertise spans modern React frontends, robust APIs, and cloud-based infrastructure, with a strong focus on type safety, testing, and CI/CD pipelines.
-                    </motion.p>
-                    <br></br>
-                    <motion.p
-                        variants={itemVariants}
-                        className="text-md md:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed"
-                    >
-                        I've delivered internal tools and production applications across enterprise and agency environments, working closely with product, design, and compliance teams to transform complex requirements into practical, high-quality solutions.
-                    </motion.p>
-                </motion.div>
+        <section id="about" className="py-24 relative bg-white border-y border-dark-200">
+            <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16">
+                <div className="mb-16 grid grid-cols-12 gap-6">
+                    <div className="col-span-12 lg:col-span-3">
+                        <div className="font-mono text-xs text-dark-500 tracking-wider">
+                            002 — ABOUT
+                        </div>
+                    </div>
+                    <div className="col-span-12 lg:col-span-9 space-y-6">
+                        <h2 className="text-4xl md:text-6xl font-light tracking-tight leading-tight">
+                            About Me
+                        </h2>
+                        <div className="w-12 h-px bg-dark-900" />
+                        <p className="text-sm md:text-base text-dark-700 leading-relaxed font-sans">
+                            I design and build reliable full-stack systems with an emphasis on security, maintainability, and scalability. My expertise spans modern React frontends, robust APIs, and cloud-based infrastructure, with a strong focus on automation, testing, and CI/CD pipelines.
+                        </p>
+                        <p className="text-sm md:text-base text-dark-700 leading-relaxed font-sans">
+                            I've delivered internal tools and production applications across enterprise and agency environments, working closely with product, design, and compliance teams to transform complex requirements into practical, high-quality solutions.
+                        </p>
+                    </div>
+                </div>
 
                 {/* Skills Grid */}
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
-                >
+                <div className="grid grid-cols-12 gap-6 mb-16">
                     {skills.map((skill) => (
-                        <motion.div
+                        <div
                             key={skill.category}
-                            variants={itemVariants}
-                            whileHover={{ scale: 1.05, y: -5 }}
-                            className="glass-effect p-6 rounded-xl group"
+                            className="col-span-12 md:col-span-4 bg-white border border-dark-200 p-8 hover:border-dark-900 transition-colors duration-200"
                         >
-                            <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${skill.color} p-3 mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                                <skill.icon className="w-full h-full text-white" />
+                            <div className="flex items-center gap-3 mb-6">
+                                <skill.icon className="w-5 h-5 text-dark-900" />
+                                <h3 className="text-lg font-light tracking-tight">{skill.category}</h3>
                             </div>
-                            <h3 className="text-xl font-semibold mb-4 text-white">{skill.category}</h3>
                             <div className="space-y-2">
-                                {skill.technologies.map((tech) => (
+                                {skill.technologies.map((tech, i) => (
                                     <div
                                         key={tech}
-                                        className="flex items-center text-sm text-gray-400 group-hover:text-white transition-colors duration-200"
+                                        className="flex items-center text-xs font-mono"
                                     >
-                                        <ChevronRight className="w-4 h-4 mr-2 text-primary-500" />
-                                        {tech}
+                                        <span className="text-dark-400 mr-3">{String(i + 1).padStart(2, '0')}</span>
+                                        <span className="text-dark-900">{tech}</span>
                                     </div>
                                 ))}
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
 
                 {/* Experience & Achievements */}
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    className="grid grid-cols-1 lg:grid-cols-2 gap-12"
-                >
+                <div className="grid grid-cols-12 gap-12">
                     {/* Experience */}
-                    <motion.div variants={itemVariants} className="space-y-6">
-                        <h3 className="text-2xl font-bold text-white mb-6">Experience</h3>
+                    <div className="col-span-12 lg:col-span-7 space-y-8">
+                        <div className="flex items-center gap-4">
+                            <span className="font-mono text-xs text-dark-500 tracking-wider">EXPERIENCE</span>
+                            <div className="flex-1 h-px bg-dark-200" />
+                        </div>
                         <div className="space-y-6">
                             {[
                                 {
                                     title: 'Software Engineer, Cyber Risk',
                                     company: 'Deloitte',
                                     period: '2025 - Present',
-                                    description: 'Design and build secure, AI-driven internal tools supporting cyber incident response. Deliver compliant, well-tested React and TypeScript applications integrated with enterprise identity systems and internal APIs.'
+                                    description: 'Design and build secure, AI-driven internal tools supporting cyber incident response. Deliver compliant, well-tested React and TypeScript applications integrated with enterprise identity systems, internal APIs, and AI/ML models.'
                                 },
                                 {
                                     title: 'Full Stack Developer',
@@ -163,56 +116,56 @@ const About: React.FC = () => {
                                     description: 'Taught foundational programming concepts, problem-solving, and software logic through hands-on lessons and structured curricula.'
                                 }
                             ].map((exp, index) => (
-                                <motion.div
+                                <div
                                     key={index}
-                                    whileHover={{ x: 10 }}
-                                    className="glass-effect p-6 rounded-lg border-l-4 border-primary-500"
+                                    className="bg-white border border-dark-200 p-6 hover:border-dark-900 transition-colors duration-200"
                                 >
-                                    <div className="flex justify-between items-start mb-2">
-                                        <h4 className="text-lg font-semibold text-white">{exp.title}</h4>
-                                        <span className="text-sm text-gray-400">{exp.period}</span>
+                                    <div className="flex justify-between items-start mb-3 gap-4">
+                                        <h4 className="text-base font-light">{exp.title}</h4>
+                                        <span className="text-xs font-mono text-dark-500 whitespace-nowrap">{exp.period}</span>
                                     </div>
-                                    <p className="text-primary-400 font-medium mb-2">{exp.company}</p>
-                                    <p className="text-gray-400">{exp.description}</p>
-                                </motion.div>
+                                    <p className="text-dark-900 font-mono text-xs mb-3 tracking-wider">{exp.company}</p>
+                                    <p className="text-dark-700 text-sm leading-relaxed font-sans">{exp.description}</p>
+                                </div>
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Achievements */}
-                    <motion.div variants={itemVariants} className="space-y-6">
-                        <h3 className="text-2xl font-bold text-white mb-6">Key Achievements</h3>
+                    <div className="col-span-12 lg:col-span-5 space-y-8">
+                        <div className="flex items-center gap-4">
+                            <span className="font-mono text-xs text-dark-500 tracking-wider">ACHIEVEMENTS</span>
+                            <div className="flex-1 h-px bg-dark-200" />
+                        </div>
                         <div className="space-y-4">
                             {achievements.map((achievement, index) => (
-                                <motion.div
+                                <div
                                     key={index}
-                                    whileHover={{ scale: 1.02 }}
-                                    className="flex items-center space-x-4 glass-effect p-4 rounded-lg"
+                                    className="bg-white border border-dark-200 p-5 hover:border-dark-900 transition-colors duration-200"
                                 >
-                                    <achievement.icon className={`w-6 h-6 ${achievement.color} flex-shrink-0`} />
-                                    <div className="flex flex-col">
-                                        <p className="text-gray-300 font-bold">{achievement.text}</p>
-                                        <p className="text-gray-400 text-sm">{achievement.subtext}</p>
+                                    <div className="flex items-start gap-4">
+                                        <achievement.icon className="w-5 h-5 text-dark-900 flex-shrink-0 mt-1" />
+                                        <div className="flex flex-col space-y-2">
+                                            <p className="text-dark-900 font-light text-sm leading-tight">{achievement.text}</p>
+                                            <p className="text-dark-600 text-xs leading-relaxed font-sans">{achievement.subtext}</p>
+                                        </div>
                                     </div>
-                                </motion.div>
+                                </div>
                             ))}
                         </div>
 
                         {/* Personal Touch */}
-                        <motion.div
-                            whileHover={{ scale: 1.02 }}
-                            className="glass-effect p-6 rounded-lg mt-8"
-                        >
-                            <h4 className="text-lg font-semibold text-white mb-3">Beyond Code</h4>
-                            <p className="text-gray-400 leading-relaxed">
-                                When I'm not coding, you'll find me in the backcountry—hiking, camping, and exploring. Nature helps me reset, think clearly, and see the elegance in systems.
+                        <div className="bg-dark-900 text-white border border-dark-900 p-6 mt-8">
+                            <h4 className="text-sm font-mono mb-4 tracking-wider">BEYOND CODE</h4>
+                            <p className="text-dark-100 text-xs leading-relaxed mb-3 font-sans">
+                                When I'm not coding, you'll find me in the backcountry; hiking, camping, and exploring. Nature helps me reset, think clearly, and see the elegance in systems.
                             </p>
-                            <p className="text-gray-400 leading-relaxed mt-4">
-                                I'm also a musician, and the creativity, collaboration, and iterative mindset it requires shapes how I tackle challenges and innovate in my work.
+                            <p className="text-dark-100 text-xs leading-relaxed font-sans">
+                                I'm also a musician! The creativity, collaboration, and iterative mindset that my music requires shapes how I tackle challenges and innovate in my work.
                             </p>
-                        </motion.div>
-                    </motion.div>
-                </motion.div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     )
