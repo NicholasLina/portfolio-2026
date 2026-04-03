@@ -1,3 +1,15 @@
+import React from 'react'
+import { contactDetails, socialLinks } from '../data/contact'
+
+const quickLinks = [
+    { name: 'About', href: '#about' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Contact', href: '#contact' },
+]
+
+const Footer: React.FC = () => {
+    const currentYear = new Date().getFullYear()
+
     return (
         <footer className="bg-dark-900 text-white border-t-8 border-dark-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
